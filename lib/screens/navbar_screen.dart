@@ -6,15 +6,11 @@ class NavbarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Lista de Tareas:"),
-          bottom: TabBar(
-            tabs: icons
-                .map((icons) => Tab(icon: Icon(icons, size: 30)))
-                .toList(),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Lista de Tareas:"),
+        bottom: TabBar(
+          tabs: icons.map((icons) => Tab(icon: Icon(icons, size: 30))).toList(),
         ),
       ),
     );
