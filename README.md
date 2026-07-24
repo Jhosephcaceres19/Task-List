@@ -17,10 +17,13 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
+# Arquitectura por Capas 
+## Organizacion por tipo de componentes
 
 lib/
 ├── data/
 │   └── data.dart               <-- Aquí estarían tus ListMap
-├── models/
-├── screens/
+├── models/                  <--- Logica de de negocio
+├── screens/              <---  Interfaz de usuario
 └── main.dart
+
