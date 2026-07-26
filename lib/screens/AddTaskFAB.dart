@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_list/screens/task_form_screen.dart';
 
 class Addtaskfab extends StatelessWidget {
   const Addtaskfab({super.key});
@@ -7,7 +8,11 @@ class Addtaskfab extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        print("Agragar tarea");
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          builder: (context) => TaskFormScreen(),
+        );
       },
       child: Icon(Icons.add),
     );
