@@ -12,13 +12,13 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _taskTitulo = TextEditingController();
   final TextEditingController _taskDescripcion = TextEditingController();
-  final TextEditingController _taskEstado = TextEditingController();
+
+  EstadoTask _estadoSeleccionado = EstadoTask.pendiente;
 
   @override
   void dispose() {
     _taskTitulo.dispose();
     _taskDescripcion.dispose();
-    _taskEstado.dispose();
   }
 
   @override
@@ -58,14 +58,18 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
                 },
               ),
 
-              _buildTextField(
-                label: "Ingrese estado",
-                controller: _taskEstado,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "Ingrese el esatdo";
-                  }
-                  return null;
+              DropdownButtonFormField<EstadoTask>(
+                initialValue: _estadoSeleccionado,
+                items: EstadoTask.values.map((estado) {
+                  return DropdownMenuItem(
+                    value: estado,
+                    child: Text(estado.name),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _estadoSeleccionado = value!;
+                  });
                 },
               ),
               ElevatedButton(
@@ -74,7 +78,7 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
                     tasks.add({
                       "titulo": _taskTitulo.text,
                       "descripcion": _taskDescripcion.text,
-                      "estado": EstadoTask.pendiente,
+                      "estado": _estadoSeleccionado,
                     });
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(

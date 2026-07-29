@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:task_list/screens/AddTaskFAB.dart';
+import 'package:task_list/screens/addTaskFAB.dart';
+import 'package:task_list/screens/body_screen.dart';
 import 'package:task_list/screens/navbar_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       length: iconsData.length,
       child: Scaffold(
         appBar: NavbarScreen(icons: iconsData),
+        body: BodyScreen(),
         floatingActionButton: Addtaskfab(
           onTaskAdded: () {
             setState(() {});
