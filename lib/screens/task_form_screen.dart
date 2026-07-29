@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_list/data/data.dart';
 
 class TaskFormScreen extends StatefulWidget {
   const TaskFormScreen({super.key});
@@ -70,7 +71,22 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    print(_taskTitulo);
+                    tasks.add({
+                      "titulo": _taskTitulo.text,
+                      "descripcion": _taskDescripcion.text,
+                      "estado": EstadoTask.pendiente,
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Tarea  creada"),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
+                    Navigator.pop(context, true);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Error en el formulario")),
+                    );
                   }
                 },
                 child: Text("Guardar"),

@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:task_list/screens/AddTaskFAB.dart';
 import 'package:task_list/screens/navbar_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   static const Map<String, IconData> iconsData = {
     "Inicio": Icons.task,
     "En proceso": Icons.pending_actions,
@@ -17,7 +22,11 @@ class HomeScreen extends StatelessWidget {
       length: iconsData.length,
       child: Scaffold(
         appBar: NavbarScreen(icons: iconsData),
-        floatingActionButton: const Addtaskfab(),
+        floatingActionButton: Addtaskfab(
+          onTaskAdded: () {
+            setState(() {});
+          },
+        ),
       ),
     );
   }
