@@ -75,11 +75,11 @@ class _TaskFormScreenState extends State<TaskFormScreen> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    tasks.add({
-                      "titulo": _taskTitulo.text,
-                      "descripcion": _taskDescripcion.text,
-                      "estado": _estadoSeleccionado,
-                    });
+                    addTarea(
+                      titulo: _taskTitulo.text,
+                      descripcion: _taskDescripcion.text,
+                      estado: _estadoSeleccionado,
+                    );
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text("Tarea  creada"),

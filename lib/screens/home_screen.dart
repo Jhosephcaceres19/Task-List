@@ -23,7 +23,37 @@ class _HomeScreenState extends State<HomeScreen> {
       length: iconsData.length,
       child: Scaffold(
         appBar: NavbarScreen(icons: iconsData),
-        body: BodyScreen(),
+        body: TabBarView(
+          children: [
+            BodyScreen(),
+            Container(
+              color: Colors.white,
+              child: const Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.favorite, size: 50, color: Colors.amber),
+                    SizedBox(height: 20),
+                    Text("AUI SE MOSTRARAN LOS FAVORITOS"),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              child: const Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.favorite, size: 50, color: Colors.amber),
+                    SizedBox(height: 20),
+                    Text("tareas realizadas"),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
         floatingActionButton: Addtaskfab(
           onTaskAdded: () {
             setState(() {});

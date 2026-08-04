@@ -16,20 +16,27 @@ final List<Map<String, dynamic>> tasks = [
 //filtro de valores de una lista de map:
 
 final pendiente = tasks
-    .where((tasks) => tasks["estado"] == "pendiente")
+    .where((tasks) => tasks["estado"] == EstadoTask.pendiente)
     .toList();
 
 final terminado = tasks
-    .where((tasks) => tasks["estado"] == "terminado")
+    .where((tasks) => tasks["estado"] == EstadoTask.terminado)
     .toList();
 
 //eliminar un map de una lista
 
 void eliminarTarea(String titulo) {
-  tasks.removeWhere((tasks) => tasks["titulo"] == "tarea1");
+  tasks.removeWhere(
+    (tasks) => tasks["titulo"].toString().toLowerCase() == "tarea1",
+  );
 }
 
-void addTarea({required String titulo, required String descripcion}) {
+// add tarea a la lista
+void addTarea({
+  required String titulo,
+  required String descripcion,
+  required EstadoTask estado,
+}) {
   tasks.add({
     "titulo": titulo,
     "descripcion": descripcion,
